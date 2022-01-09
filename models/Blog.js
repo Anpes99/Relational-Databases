@@ -1,14 +1,5 @@
-require("dotenv").config();
-const { Model, DataTypes, Sequelize } = require("sequelize");
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+const { Model, DataTypes } = require("sequelize");
+const { sequelize } = require("../utils/db");
 
 class Blog extends Model {}
 Blog.init(
@@ -41,4 +32,4 @@ Blog.init(
   }
 );
 
-module.exports = { Blog };
+module.exports = Blog;
